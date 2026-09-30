@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>MINI — Research Dashboard</title>
+
+  <link rel="stylesheet" href="dashboard.css">
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+
+<body>
+
+  <header class="topbar">
+    <div>
+      <div class="brand">
+        ☪ <span>MINI</span>
+      </div>
+      <p>Everyday First Aid — Research Dashboard</p>
+    </div>
+
+    <button id="refreshBtn">↻ Refresh</button>
+  </header>
+
+
+  <main class="dashboard">
+
+    <!-- OVERVIEW -->
+
+    <section>
+      <div class="section-title">
+        <span>Overview</span>
+        <small id="lastUpdate">Loading...</small>
+      </div>
+
+      <div class="stats-grid">
+
+        <div class="stat-card">
+          <span>Total responses</span>
+          <strong id="totalResponses">0</strong>
+        </div>
+
+        <div class="stat-card">
+          <span>Today</span>
+          <strong id="todayResponses">0</strong>
+        </div>
+
+        <div class="stat-card">
+          <span>This week</span>
+          <strong id="weekResponses">0</strong>
+        </div>
+
+        <div class="stat-card">
+          <span>Languages</span>
+          <strong id="languageCount">0</strong>
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- LANGUAGE + PROFILE -->
+
+    <section class="two-columns">
+
+      <div class="panel">
+        <h2>🌍 Languages</h2>
+        <div id="languageChart"></div>
+      </div>
+
+      <div class="panel">
+        <h2>👤 Profiles</h2>
+        <div id="profileChart"></div>
+      </div>
+
+    </section>
+
+
+    <!-- INJURY -->
+
+    <section class="panel">
+      <h2>🩹 Injury frequency</h2>
+      <div id="injuryChart"></div>
+    </section>
+
+
+    <!-- CURRENT ACTION -->
+
+    <section class="panel">
+      <h2>🧴 What people currently do</h2>
+      <div id="currentActionChart"></div>
+    </section>
+
+
+    <!-- USEFULNESS + FORMAT -->
+
+    <section class="two-columns">
+
+      <div class="panel">
+        <h2>💡 Product usefulness</h2>
+        <div id="usefulnessChart"></div>
+      </div>
+
+      <div class="panel">
+        <h2>📦 Preferred format</h2>
+        <div id="formatChart"></div>
+      </div>
+
+    </section>
+
+
+    <!-- PRICE -->
+
+    <section class="two-columns">
+
+      <div class="panel">
+        <h2>💰 Reasonable price</h2>
+        <div id="goodPriceChart"></div>
+      </div>
+
+      <div class="panel">
+        <h2>🚨 Too expensive</h2>
+        <div id="tooExpensiveChart"></div>
+      </div>
+
+    </section>
+
+
+    <!-- BUY INTENT -->
+
+    <section class="panel">
+      <h2>🛒 Purchase intention</h2>
+      <div id="buyIntentChart"></div>
+    </section>
+
+
+    <!-- MULTIPLE CHOICE -->
+
+    <section class="two-columns">
+
+      <div class="panel">
+        <h2>📍 Where people want to buy</h2>
+        <div id="purchasePlaceChart"></div>
+      </div>
+
+      <div class="panel">
+        <h2>⭐ Most important priorities</h2>
+        <div id="prioritiesChart"></div>
+      </div>
+
+    </section>
+
+
+    <!-- DIFFICULTIES -->
+
+    <section class="panel">
+      <h2>😕 Main difficulties</h2>
+      <div id="difficultyChart"></div>
+    </section>
+
+
+    <!-- OPEN ANSWERS -->
+
+    <section class="panel">
+
+      <div class="panel-header">
+        <div>
+          <h2>💬 Suggestions & expectations</h2>
+          <p>Open answers from respondents</p>
+        </div>
+
+        <button id="showAllBtn">Show all</button>
+      </div>
+
+      <div id="openAnswers"></div>
+
+    </section>
+
+
+    <!-- RAW RESPONSES -->
+
+    <section class="panel">
+
+      <div class="panel-header">
+        <div>
+          <h2>📋 Responses</h2>
+          <p>Latest submitted answers</p>
+        </div>
+
+        <input
+          type="text"
+          id="searchInput"
+          placeholder="Search..."
+        >
+      </div>
+
+      <div class="table-wrapper">
+
+        <table>
+
+          <thead>
+            <tr>
+              <th>Date</th>
+              <th>Language</th>
+              <th>Profile</th>
+              <th>Injury</th>
+              <th>Useful?</th>
+              <th>Price</th>
+              <th>Buy?</th>
+            </tr>
+          </thead>
+
+          <tbody id="responsesTable">
+          </tbody>
+
+        </table>
+
+      </div>
+
+    </section>
+
+  </main>
+
+
+  <footer>
+    MINI • Everyday First Aid • Research 2026
+  </footer>
+
+
+  <script src="dashboard.js"></script>
+
+</body>
+</html>
