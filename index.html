@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="fr" dir="ltr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#0f766e" />
+  <meta name="description" content="Questionnaire trilingue pour valider une idée de mini produit de premiers soins du quotidien." />
+  <meta name="referrer" content="strict-origin-when-cross-origin" />
+  <title>MINI — Questionnaire</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="ambient ambient-one"></div>
+  <div class="ambient ambient-two"></div>
+
+  <header class="site-header container">
+    <a class="brand" href="#top" aria-label="Mini First Aid home">
+      <span class="brand-mark" aria-hidden="true">
+        <svg viewBox="0 0 48 48" role="img">
+          <path class="crescent" d="M30.8 8.7c-8.9 1.5-15.6 8.8-15.6 17.6 0 9.9 8 17.9 17.9 17.9 2.2 0 4.3-.4 6.2-1.1-4.8-.7-9.2-2.8-12.1-6.1-4.1-4.6-5.5-10.8-3.8-16.5 1.5-5.1 4.6-9.2 7.4-11.8Z"/>
+          <path class="star" d="M35.4 12.1l1 2.2 2.4.3-1.8 1.6.5 2.3-2.1-1.2-2.1 1.2.5-2.3-1.8-1.6 2.4-.3 1-2.2Z"/>
+        </svg>
+      </span>
+      <span>
+        <strong>MINI<span>•</span></strong>
+        <small>Everyday first aid</small>
+      </span>
+    </a>
+
+    <div class="lang-switch" role="group" aria-label="Language selector">
+      <button type="button" class="lang-btn" data-lang="fr">FR</button>
+      <button type="button" class="lang-btn active" data-lang="en">EN</button>
+      <button type="button" class="lang-btn" data-lang="ar">ع</button>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero container">
+      <div class="hero-copy">
+        <div class="eyebrow"><span class="eyebrow-dot"></span><span data-i18n="eyebrow">2-minute product research</span></div>
+        <h1 data-i18n="heroTitle">Small problem. <span>Simple first-aid.</span></h1>
+        <p class="hero-lead" data-i18n="heroLead">We are exploring a compact, ready-to-use solution for small everyday injuries. Your honest opinion will help us decide what to build.</p>
+
+        <div class="hero-actions">
+          <button class="btn btn-primary" id="startBtn" type="button">
+            <span data-i18n="start">Start the questionnaire</span>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </button>
+          <div class="privacy-note">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 11V8a5 5 0 0 1 10 0v3M6 11h12v10H6z"/></svg>
+            <span data-i18n="privacyShort">No name or email required.</span>
+          </div>
+        </div>
+
+        <div class="trust-row">
+          <div class="trust-item"><span class="trust-icon">2'</span><span data-i18n="twoMinutes">About 2 minutes</span></div>
+          <div class="trust-item"><span class="trust-icon">◌</span><span data-i18n="noSensitive">No sensitive questions</span></div>
+          <div class="trust-item"><span class="trust-icon">♡</span><span data-i18n="honest">Honest answers welcome</span></div>
+        </div>
+      </div>
+
+      <div class="hero-visual">
+        <div class="image-frame">
+          <img
+            src="https://images.unsplash.com/photo-1587854692152-cbe660dbde88?auto=format&fit=crop&w=1400&q=85"
+            alt="Clean medical supplies"
+            loading="eager"
+          />
+          <div class="image-overlay"></div>
+          <div class="floating-card card-top">
+            <span class="mini-icon green">✓</span>
+            <div><strong data-i18n="cardClean">Clean</strong><small data-i18n="cardCleanSub">Ready when needed</small></div>
+          </div>
+          <div class="floating-card card-bottom">
+            <span class="mini-icon orange">☾</span>
+            <div><strong data-i18n="cardCarry">Carry it</strong><small data-i18n="cardCarrySub">Pocket • bag • car</small></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="survey-shell container" id="survey">
+      <div class="survey-head">
+        <div>
+          <span class="section-kicker" data-i18n="sectionKicker">Product research</span>
+          <h2 data-i18n="sectionTitle">Help shape the first version</h2>
+          <p data-i18n="sectionLead">We intentionally keep the product description broad so your answers are not influenced by a specific design.</p>
+        </div>
+        <div class="progress-wrap" aria-live="polite">
+          <div class="progress-meta"><span id="progressLabel">0%</span><span data-i18n="complete">complete</span></div>
+          <div class="progress-bar"><span id="progressBar"></span></div>
+        </div>
+      </div>
+
+      <form id="surveyForm" novalidate>
+        <div id="questions"></div>
+
+        <div class="consent-box">
+          <div class="consent-icon">✓</div>
+          <div>
+            <strong data-i18n="consentTitle">No personal information is requested.</strong>
+            <p data-i18n="consentText">Please answer based on your own experience. Do not enter names, phone numbers, emails or medical details.</p>
+          </div>
+        </div>
+
+        <div class="form-footer">
+          <p class="required-note"><span>*</span> <span data-i18n="required">Required question</span></p>
+          <button class="btn btn-primary btn-submit" id="submitBtn" type="submit">
+            <span data-i18n="submit">Send my answers</span>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h13M12 5l7 7-7 7"/></svg>
+          </button>
+        </div>
+      </form>
+
+      <div class="success-state" id="successState" hidden>
+        <div class="success-orb">✓</div>
+        <span class="section-kicker" data-i18n="successKicker">Thank you</span>
+        <h2 data-i18n="successTitle">Your feedback has been saved.</h2>
+        <p data-i18n="successText">Your answer can be saved securely online when Supabase is connected. You can also download a PDF copy of your response.</p>
+        <div class="success-actions">
+          <button class="btn btn-secondary" type="button" id="anotherBtn" data-i18n="another">Answer again</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="mini-info container">
+      <div class="info-card">
+        <div class="info-icon">01</div>
+        <div><strong data-i18n="info1Title">We test the problem first</strong><p data-i18n="info1Text">The goal is to understand everyday habits before producing anything.</p></div>
+      </div>
+      <div class="info-card">
+        <div class="info-icon">02</div>
+        <div><strong data-i18n="info2Title">Your price opinion matters</strong><p data-i18n="info2Text">It helps us understand whether the idea can stay accessible.</p></div>
+      </div>
+      <div class="info-card">
+        <div class="info-icon">03</div>
+        <div><strong data-i18n="info3Title">One small answer can help</strong><p data-i18n="info3Text">Even a short response helps us decide what to test next.</p></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer container">
+    <span>MINI</span>
+    <span data-i18n="footer">Concept research • Morocco • 2026</span>
+  </footer>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+
+<script src="script.js"></script>
+
+</body>
+</html>
